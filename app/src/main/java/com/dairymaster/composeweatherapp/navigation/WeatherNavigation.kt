@@ -9,7 +9,9 @@ import com.dairymaster.composeweatherapp.screens.*
 @Composable
 fun WeatherNavigation() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = WeatherScreens.SplashScreen.name) {
+    NavHost(navController = navController,
+        startDestination = WeatherScreens.SplashScreen.name) {
+
         composable(WeatherScreens.SplashScreen.name) {
             WeatherSplashScreen(navController)
         }
