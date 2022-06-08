@@ -1,10 +1,36 @@
-package com.dairymaster.composeweatherapp.screens
+package com.dairymaster.composeweatherapp.screens.main
 
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.produceState
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.dairymaster.composeweatherapp.data.DataOrException
+import com.dairymaster.composeweatherapp.model.Weather
 
 @Composable
-fun WeatherMainScreen(navController: NavController){
-    Text(text = "WeatherMainScreen")
+fun WeatherMainScreen(
+    navController: NavController,
+    mainViewModel: MainViewModel = hiltViewModel()
+) {
+    ShowData(mainViewModel)
+}
+
+@Composable
+fun ShowData(mainViewModel: MainViewModel) {
+    val weatherData = produceState<DataOrException<Weather, Boolean, Exception>>(
+        initialValue = DataOrException(loading = true)
+    ) {
+        value = mainViewModel.getWeatherData("Tralee")
+    }.value
+
+    if (weatherData.loading == true){
+        CircularProgressIndicator()
+    } else if (weatherData.data != null){
+        Text(text = "Main Screen : ${weatherData.data!!.city.country}")
+    }
+
+
+
 }
