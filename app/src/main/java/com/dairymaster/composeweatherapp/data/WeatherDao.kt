@@ -3,7 +3,8 @@ package com.dairymaster.composeweatherapp.data
 import androidx.room.*
 import com.dairymaster.composeweatherapp.model.Favorite
 import kotlinx.coroutines.flow.Flow
-/*
+import com.dairymaster.composeweatherapp.model.Unit
+
 
 @Dao
 interface WeatherDao {
@@ -41,4 +42,4 @@ interface WeatherDao {
     @Delete
     suspend fun deleteUnit(unit: Unit)
 
-}*/
+}

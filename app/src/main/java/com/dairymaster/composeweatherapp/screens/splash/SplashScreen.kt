@@ -1,4 +1,4 @@
-package com.dairymaster.composeweatherapp.screens
+package com.dairymaster.composeweatherapp.screens.splash
 
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable
@@ -29,8 +29,8 @@ import com.dairymaster.composeweatherapp.navigation.WeatherScreens
 import kotlinx.coroutines.delay
 
 @Composable
-fun WeatherSplashScreen(navController: NavController) {
-
+fun SplashScreen(navController: NavController) {
+    val defaultCity = "Tralee"
     val scale = remember {
         Animatable(0f)
     }
@@ -46,7 +46,7 @@ fun WeatherSplashScreen(navController: NavController) {
 
         delay(2000L)
 
-        navController.navigate(route = WeatherScreens.MainScreen.name)
+        navController.navigate(WeatherScreens.MainScreen.name +"/$defaultCity")
     })
 
     Surface(
